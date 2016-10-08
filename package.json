@@ -1,0 +1,17 @@
+{
+  "name": "residence-telegram-bot",
+  "version": "1.0.0",
+  "description": "WG-gesucht.de Telegram Bot",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "AGPL-3.0",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "node-schedule": "^1.1.1",
+    "node-telegram-bot-api": "^0.23.3",
+    "request": "^2.75.0"
+  }
+}
