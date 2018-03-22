@@ -3,8 +3,12 @@ var schedule = require('node-schedule')
 var config = require('./config.json')
 
 var plugins = {
-  'wgGesucht': require('./datasources/wg-gesucht.js')
+  'dartmouth': require('./datasources/dartmouth.js')
 }
+
+//plugins.dartmouth.fetch(plugins.dartmouth.newFilter(), function(result) {})
+
+//return;
 
 var sessions = {}
 
@@ -14,10 +18,10 @@ bot.onText(/\/start/, function (msg, match) {
   console.log('Received a /start command from', msg.chat.title != null ? msg.chat.title : msg.chat.username)
 
   if (!(msg.chat.id in sessions)) {
-    var filter = plugins.wgGesucht.newFilter()
+    var filter = plugins.dartmouth.newFilter()
 
     var job = schedule.scheduleJob('*/5 * * * *', function () {
-      plugins.wgGesucht.fetch(filter, function (result) { // TODO refactor
+      plugins.dartmouth.fetch(filter, function (result) { // TODO refactor
         var session = sessions[msg.chat.id]
 
         // skip already posted entries
